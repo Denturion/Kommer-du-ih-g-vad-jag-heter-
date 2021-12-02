@@ -52,4 +52,21 @@ myBtn.addEventListener("click", () => {
 
 function addItem() {
     let nameInput = localStorage.getItem("username");
+    inputDiv.innerHTML +=
+    `<div id='name'> ` +
+    nameInput +
+    `<button id="delBtn">Delete</button></div>`;
+}
+
+let delBtn = document.getElementById("delBtn");
+
+inputDiv.addEventListener("click", (e) => {
+    if (e.target.tagName === "BUTTON") {
+        e.target.parentElement.remove();
+        localStorage.removeItem("username");
+    }
+});
+
+if (nameInput) {
+    addItem(nameInput);
 }
